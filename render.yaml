@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: dt-backend
+    name: render-failure-logs-test-backend
     env: node
     plan: starter
     buildCommand: echo build
@@ -9,29 +9,29 @@ services:
     envVars:
       - key: MINIO_ACCESS_KEY
         fromService:
-          name: gp-minio
+          name: render-failure-logs-test-minio
           type: pserv
           envVarKey: MINIO_ACCESS_KEY
       - key: MINIO_SECRET_KEY
         fromService:
-          name: gp-minio
+          name: render-failure-logs-test-minio
           type: pserv
           envVarKey: MINIO_SECRET_KEY
       - key: MINIO_HOST
         fromService:
-          name: gp-minio
+          name: render-failure-logs-test-minio
           type: pserv
           property: host
       - key: MINIO_ENDPOINT
         fromService:
-          name: gp-minio
+          name: render-failure-logs-test-minio
           type: pserv
           property: host
       - key: MINIO_BUCKET
         value: assets
 
   - type: web
-    name: gp-minio
+    name: render-failure-logs-test-minio
     env: docker
     dockerfilePath: ./minio/Dockerfile
     dockerContext: ./minio
